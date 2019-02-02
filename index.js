@@ -209,19 +209,19 @@ app.intent('Clear-Location', (conv) => {
     conv.close('Your location has been cleared. Goodbye.');
 });
 
-server.get('/dialogflowHandler', (req, res) => {
+server.get('/', (req, res) => {
+    res.send("Bus-Predictor API.");
+});
+
+server.post('/dialogflowHandler', (req, res) => {
     const headers = req.headers;
-    if (req.method === 'POST') {
-        if (headers.key === config.key) {
-            app(req, res);
-        } else {
-            console.log('Unauthorized access attempted.');
-            res.status(401).send("Unauthorized.");
-        }
+    if (headers.key === config.key) {
+        app(req, res);
     } else {
-        res.send("Bus-Predictor API.");
+        console.log('Unauthorized access attempted.');
+        res.status(401).send("Unauthorized.");
     }
-})
+});
 
 server.listen(config.port, () => {
     console.log('Listening on port ' + config.port);
