@@ -20,6 +20,7 @@
   "dependencies": {
     "actions-on-google": "^2.5.0",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "google-polyline": "^1.0.2",
     "xml-parser": "^1.2.1"

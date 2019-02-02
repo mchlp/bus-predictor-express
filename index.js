@@ -2,9 +2,12 @@ const googlePolyline = require('google-polyline');
 const axios = require('axios');
 const config = require('./config.json');
 const xmlParser = require('xml-parser');
+const bodyParser = require('body-parser');
 const { dialogflow, Permission } = require('actions-on-google');
 const express = require('express');
 const server = express();
+
+server.use(bodyParser.json());
 
 const globals = {
     apiKey: config['cloud-platform']['api-key'],
