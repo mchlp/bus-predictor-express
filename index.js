@@ -135,6 +135,7 @@ app.intent('Retrieve-Next-Arrival-Time-By-Route', async (conv) => {
 
         if (filteredStopsList.length > 0) {
             filteredStopsList.sort(sortStopsByDistance);
+            /*
             const closestStops = filteredStopsList.slice(0, config['google-maps-api']['distance-matrix-batch-size']);
             const stopCoordinates = [];
             for (let i = 0; i < closestStops.length; i++) {
@@ -154,7 +155,8 @@ app.intent('Retrieve-Next-Arrival-Time-By-Route', async (conv) => {
                     }
                 }
             }
-
+            */
+            minStop = filteredStopsList[0];
             let predictionMessage = 'Your closest stop for this route is ' + minStop.title + '.';
 
             const predictionRes = await axios.get(globals.nextBusUrl + '?command=predictions&a=' + globals.agency + '&r=' + routeNum + '&s=' + minStop.tag);
